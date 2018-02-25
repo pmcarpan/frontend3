@@ -1,3 +1,5 @@
+<!-- <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet" > -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<link rel="stylesheet" href="Styles.css" />
+<link rel="stylesheet" href="<c:url value="/resources/css/Styles.css" />" /> 
 </head>
 
 <body>
@@ -61,18 +63,19 @@
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner">
-				<div class="item active">
-					<img src="images/LaptopImg.jpg" alt="Laptop" style="height:600px;width:100%;"
+				<div class="item active"> 
+					<img src="<c:url value="/resources/images/LaptopImg.jpg" />"  
+					style="height:600px;width:100%;"
+					class="img-responsive center-block">
+				</div>
+
+				<div class="item">
+					<img src="<c:url value="/resources/images/TVImg.jpe" />" 
 							class="img-responsive center-block">
 				</div>
 
 				<div class="item">
-					<img src="images/TVImg.jpe" alt="LED TV" 
-							class="img-responsive center-block">
-				</div>
-
-				<div class="item">
-					<img src="images/HeadphoneImg.jpe" alt="Headphones" 
+					<img src="<c:url value="/resources/images/HeadphoneImg.jpe" />"
 							class="img-responsive center-block">
 				</div>
 			</div>
@@ -91,6 +94,7 @@
 
 	<br>
 
+
 	<!-- Add max-width to images -->
 	<div class="container">
 		<div class="row">
@@ -98,9 +102,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">NEW YEAR DEAL</div>
 					<div class="panel-body">
-						<img src="images/SmartphonesImg.jpe"
+						<img src="<c:url value="/resources/images/SmartphonesImg.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 259px; max-width: 194px;" alt="Smartphones">
+							style="max-height: 259px; max-width: 194px;" >
 					</div>
 					<div class="panel-footer">Flat 5% discount on all smartphones</div>
 				</div>
@@ -109,9 +113,9 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">NEW ARRIVAL OFFER</div>
 					<div class="panel-body">
-						<img src="images/PredatorImg.jpe"
+						<img src="<c:url value="/resources/images/PredatorImg.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 275px; max-width: 183px;" alt="Acer Predator">
+							style="max-height: 275px; max-width: 183px;" >
 					</div>
 					<div class="panel-footer">Flat 8% discount on the new Acer Predator</div>
 				</div>
@@ -120,9 +124,9 @@
 				<div class="panel panel-success">
 					<div class="panel-heading">NEW YEAR DEAL</div>
 					<div class="panel-body">
-						<img src="images/ProjectorImg.jpe"
+						<img src="<c:url value="/resources/images/ProjectorImg.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 259px; max-width: 194px;" alt="Projector">
+							style="max-height: 259px; max-width: 194px;" >
 					</div>
 					<div class="panel-footer">Buy 2 projectors and get a gift card</div>
 				</div>
@@ -137,9 +141,9 @@
 				<div class="panel panel-primary">
 					<div class="panel-heading">DISCOUNT OFFER</div>
 					<div class="panel-body">
-						<img src="images/Headphone2Img.jpe"
+						<img src="<c:url value="/resources/images/Headphone2Img.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 275px; max-width: 183px;" alt="Headphones">
+							style="max-height: 275px; max-width: 183px;" >
 					</div>
 					<div class="panel-footer">Upto 40% discounts on headphones and speakers</div>
 				</div>
@@ -148,9 +152,9 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">SPECIAL OFFERS</div>
 					<div class="panel-body">
-						<img src="images/NikonCameraImg.jpe"
+						<img src="<c:url value="/resources/images/NikonCameraImg.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 275px; max-width: 183px;" alt="Image">
+							style="max-height: 275px; max-width: 183px;" >
 					</div>
 					<div class="panel-footer">Offers on all Nikon camera products</div>
 				</div>
@@ -159,9 +163,9 @@
 				<div class="panel panel-info">
 					<div class="panel-heading">NEW YEAR OFFER</div>
 					<div class="panel-body">
-						<img src="images/HardDriveImg.jpe"
+						<img src="<c:url value="/resources/images/HardDriveImg.jpe" />"
 							class="img-responsive center-block" 
-							style="max-height: 276px; max-width: 182px;" alt="Image">
+							style="max-height: 276px; max-width: 182px;" >
 					</div>
 					<div class="panel-footer">Upto 10% discount on computer accessories</div>
 				</div>
