@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,76 +61,44 @@
 			</div>
 		</div>
 
-		<form action="DataReceiveTest.jsp" method="POST">
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="firstname">First Name:</label> <input type="text"
-							class="form-control" name="firstname" id="firstname" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="lastname">Last Name:</label> <input type="text"
-							class="form-control" name="lastname" id="lastname" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="email">E-Mail:</label> <input type="email"
-							class="form-control" name="email" id="email" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="phone">Phone:</label> <input type="text"
-							class="form-control" name="phone" id="phone" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="address">Address:</label> <input type="text"
-							class="form-control" name="address" id="address" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="username">Username:</label> <input type="text"
-							class="form-control" name="username" id="username" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<div class="form-group">
-						<label for="pwd">Password:</label> <input type="password"
-							class="form-control" name="pwd" id="pwd" />
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4 col-lg-offset-4">
-					<button type="submit" class="btn btn-default">Register</button>
-				</div>
-			</div>
-		</form>
+		<form:form method="POST" action="registerUser" modelAttribute="user" cssClass="form-horizontal">
+			
+                <div class="form-group">
+                    <form:label for="firstname" path="firstname" class="control-label">First Name</form:label>
+                    <form:input path="firstname" id="firstname" cssClass="form-control"/>
+                </div>
+                
+            <table>
+                <tr>
+                    <td><form:label path="lastname">last Name</form:label></td>
+                    <td><form:input path="lastname"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="email">Email</form:label></td>
+                    <td><form:input path="email"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="phone">Phone</form:label></td>
+                    <td><form:input path="phone"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="address">Address</form:label></td>
+                    <td><form:input path="address"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="username">Username</form:label></td>
+                    <td><form:input path="username"/></td>
+                </tr>
+                <tr>
+                    <td><form:label path="password">Password</form:label></td>
+                    <td><form:input path="password"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" class="btn btn-default"/></td>
+                </tr>
+            </table>
+		</form:form>
+		
 
 		<br>
 	</div>
