@@ -9,6 +9,6 @@ public class ContactController {
 	@RequestMapping("/contact")  
 	public ModelAndView showContactPage() {  
 		System.out.println("from contact controller");  
-		return new ModelAndView("Contact");  
+		return new ModelAndView("contact-us");  
 	}
 }

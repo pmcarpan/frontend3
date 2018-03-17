@@ -4,7 +4,7 @@
 	<groupId>com.onlinestore</groupId>
 	<artifactId>frontend</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>frontend Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>com.onlinestore</groupId>
 			<artifactId>backend</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
 		</dependency>
 
 	</dependencies>

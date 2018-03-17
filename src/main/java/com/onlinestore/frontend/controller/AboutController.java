@@ -9,6 +9,6 @@ public class AboutController {
 	@RequestMapping("/about")  
 	public ModelAndView showAboutPage() {  
 		System.out.println("from about controller");  
-		return new ModelAndView("AboutUs");  
+		return new ModelAndView("about-us");  
 	}
 }

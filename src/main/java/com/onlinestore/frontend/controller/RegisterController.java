@@ -20,11 +20,11 @@ public class RegisterController {
 	@RequestMapping("/register")  
 	public ModelAndView showRegisterPage() {  
 		System.out.println("from register controller");  
-		return new ModelAndView("Register", "user", new User());  
+		return new ModelAndView("register", "user", new User());  
 	}
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(@ModelAttribute("user")User user, BindingResult result) {
+    public ModelAndView registerUser(@ModelAttribute("user") User user, BindingResult result) {
 //        if (result.hasErrors()) {
 //            return "error";
 //        }
@@ -32,6 +32,6 @@ public class RegisterController {
 		
 		uDAO.saveOrUpdate(user);
 		
-		return new ModelAndView("index");
+		return new ModelAndView("login");
     }
 }
