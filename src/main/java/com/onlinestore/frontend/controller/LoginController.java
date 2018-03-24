@@ -19,7 +19,7 @@ public class LoginController {
 	@Autowired
 	private UserDAO uDAO;
 	
-	@RequestMapping("/login")  
+	@RequestMapping(value = "/login")  
 	public ModelAndView showLoginPage() {  
 		System.out.println("from login controller");  
 		return new ModelAndView("login");  

@@ -19,12 +19,19 @@
   
     <%@ include file="navbar.jsp" %> 
     
+    <%--
     <p>${adminLoggedIn}</p>
-    <p>${userLoggedIn}</p>
+    <p>${userLoggedIn}</p> 
+    --%>
     
     <c:choose>
       <c:when test="${adminLoggedIn}">
         <%@ include file="admin-home.jsp" %> 
+        
+        <c:if test="${adminView == 'seller'}">
+          <%@ include file="admin-seller.jsp" %>
+        </c:if>
+        
       </c:when>
       <c:otherwise>
         <%@ include file="user-home.jsp" %> 

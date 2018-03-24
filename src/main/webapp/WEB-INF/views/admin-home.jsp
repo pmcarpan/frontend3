@@ -8,7 +8,7 @@
     	    <div class="list-group list-group-flush">
     	      <a href="#" class="list-group-item list-group-item-action">Product</a>
     	      <a href="#" class="list-group-item list-group-item-action">Category</a>
-    	      <a href="#" class="list-group-item list-group-item-action">Seller</a>
+    	      <a href="${pageContext.request.contextPath}/admin/seller" class="list-group-item list-group-item-action">Seller</a>
     	    </div>
     	  </div>
         </div>

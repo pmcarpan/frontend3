@@ -18,7 +18,7 @@
     
     <div class="container">
       <h2>About Us!</h2>
-      <p>${pageContext.request.servletPath}</p>
+      <p>${requestScope['javax.servlet.forward.request_uri']}</p>
     </div>
     
     <br>
