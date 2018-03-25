@@ -39,4 +39,22 @@ public class ItemsController {
 		
 		return adminSeller();
 	}
+	
+	@RequestMapping(value = "/admin/seller/update/{sellerId}")
+	public ModelAndView adminSellerUpdatePage(@PathVariable int sellerId) {
+		ModelAndView mv = new ModelAndView("index", "adminView", "sellerUpdate");
+		
+		mv.addObject("seller", sDAO.getSeller(sellerId));
+		
+		return mv;
+	}
+	
+	@RequestMapping(value = "/admin/seller/update")
+	public ModelAndView adminSellerUpdate(@ModelAttribute("seller") Seller seller) {
+		System.out.println(seller.getId() + " " + seller.getName());
+		
+		sDAO.saveOrUpdate(seller);
+		
+		return adminSeller();
+	}
 }

@@ -31,7 +31,7 @@
     </ul>
     <ul class="navbar-nav">
       <c:if test = "${adminLoggedIn}">
-        <li class="nav-item text-warning navbar-text">
+        <li class="nav-item text-warning navbar-text mr-2">
           Admin Logged In!
         </li>
       </c:if>

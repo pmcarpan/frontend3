@@ -31,6 +31,9 @@
         <c:if test="${adminView == 'seller'}">
           <%@ include file="admin-seller.jsp" %>
         </c:if>
+        <c:if test="${adminView == 'sellerUpdate'}">
+          <%@ include file="admin-seller-update.jsp" %>
+        </c:if>
         
       </c:when>
       <c:otherwise>

@@ -20,7 +20,9 @@ public class RegisterController {
 	@RequestMapping("/register")  
 	public ModelAndView showRegisterPage() {  
 		System.out.println("from register controller");  
-		return new ModelAndView("register", "user", new User());  
+		
+		return new ModelAndView("register");  
+		// return new ModelAndView("register", "user", new User());  
 	}
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)

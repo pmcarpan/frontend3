@@ -28,6 +28,9 @@
               <td class="align-middle">
                 <a class="btn btn-danger" 
                    href="${pageContext.request.contextPath}/admin/seller/delete/${seller.id}">Delete</a>
+                /
+                <a class="btn btn-primary" 
+                   href="${pageContext.request.contextPath}/admin/seller/update/${seller.id}">Update</a>
               </td>
             </tr>
           </c:forEach>
