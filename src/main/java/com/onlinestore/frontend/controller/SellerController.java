@@ -12,7 +12,7 @@ import com.onlinestore.backend.dao.SellerDAO;
 import com.onlinestore.backend.model.Seller;
 
 @Controller
-public class ItemsController {
+public class SellerController {
 	
 	@Autowired
 	private SellerDAO sDAO;

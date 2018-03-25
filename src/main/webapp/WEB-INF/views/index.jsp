@@ -34,6 +34,18 @@
         <c:if test="${adminView == 'sellerUpdate'}">
           <%@ include file="admin-seller-update.jsp" %>
         </c:if>
+        <c:if test="${adminView == 'category'}">
+          <%@ include file="admin-category.jsp" %>
+        </c:if>
+        <c:if test="${adminView == 'categoryUpdate'}">
+          <%@ include file="admin-category-update.jsp" %>
+        </c:if>
+        <c:if test="${adminView == 'product'}">
+          <%@ include file="admin-product.jsp" %>
+        </c:if>
+        <c:if test="${adminView == 'productUpdate'}">
+          <%@ include file="admin-product-update.jsp" %>
+        </c:if>
         
       </c:when>
       <c:otherwise>
