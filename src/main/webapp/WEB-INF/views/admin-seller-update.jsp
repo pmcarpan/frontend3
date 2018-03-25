@@ -11,7 +11,7 @@
           <form action="${pageContext.request.contextPath}/admin/seller/update" method="post">
               <div class="form-group">
                 <label for="id">Seller Id</label>
-                <input type="text" class="form-control" name="id" id="id" value="${seller.id}" required>
+                <input type="text" class="form-control" name="id" id="id" value="${seller.id}" required readonly>
               </div>
             <div class="form-group">
               <label for="sellername">Seller Name</label>
