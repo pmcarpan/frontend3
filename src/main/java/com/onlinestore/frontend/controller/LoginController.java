@@ -35,6 +35,7 @@ public class LoginController {
 			if (user.getUsername().equals("arpan123")) {
 				System.out.println("login controller -- Admin verified");
 				session.setAttribute("adminLoggedIn", true);
+				session.setAttribute("adminView", "");
 				// mv.addObject("adminLoggedIn", true);
 			}
 			else {
@@ -42,6 +43,7 @@ public class LoginController {
 				session.setAttribute("userLoggedIn", true);
 				// mv.addObject("userLoggedIn", true);
 			}
+			session.setAttribute("username", user.getUsername());
 			
 			return mv;
 		}
@@ -54,6 +56,7 @@ public class LoginController {
 	public ModelAndView signout(HttpSession session) {
 		session.setAttribute("adminLoggedIn", false);
 		session.setAttribute("userLoggedIn", false);
+		session.setAttribute("username", "");
 		
 		return new ModelAndView("index");
 	}

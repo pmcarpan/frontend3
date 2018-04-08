@@ -17,6 +17,16 @@ public class ProductController {
 	@Autowired
 	private ProductDAO pDAO;
 	
+	@RequestMapping(value = "/product/viewAll")
+	public ModelAndView allProducts() {
+		return new ModelAndView("products", "productList", pDAO.getAllProducts());
+	}
+	
+	@RequestMapping(value = "/product/view/{productId}")
+	public ModelAndView viewProduct(@PathVariable int productId) {
+		return new ModelAndView("product", "product", pDAO.getProduct(productId));
+	}
+	
 	@RequestMapping(value = "/admin/product")
 	public ModelAndView adminProduct() {
 		ModelAndView mv = new ModelAndView("index");
@@ -44,7 +54,7 @@ public class ProductController {
 	public ModelAndView adminProductrUpdatePage(@PathVariable int productId) {
 		ModelAndView mv = new ModelAndView("index", "adminView", "productUpdate");
 		
-		mv.addObject("category", pDAO.getProduct(productId));
+		mv.addObject("product", pDAO.getProduct(productId));
 		
 		return mv;
 	}
@@ -53,6 +63,7 @@ public class ProductController {
 	public ModelAndView adminProductUpdate(@ModelAttribute("product") Product product) {
 		System.out.println(product.getId() + " " + product.getName());
 		
+		// pDAO.delete(product.getId());
 		pDAO.saveOrUpdate(product);
 		
 		return adminProduct();

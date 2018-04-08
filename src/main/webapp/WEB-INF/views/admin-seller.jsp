@@ -7,6 +7,16 @@
       <h2>Seller List is empty</h2>
     </c:when>
     <c:otherwise>
+      <c:if test="${sellerMsg == 'cannotDelete'}">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="alert alert-danger text-center">
+              Could not delete seller. Check whether seller is currently selling some products or not.
+            </div>
+          </div>
+        </div>
+      </c:if>
+      
       <h2>List of Sellers</h2>
       
       <br>
@@ -54,7 +64,7 @@
           <form action="${pageContext.request.contextPath}/admin/seller/insert" method="post">
             <div class="form-group">
               <label for="sellername">Seller Name</label>
-              <input type="text" class="form-control" name="name" id="sellername" placeholder="Seller Name" required autofocus>
+              <input type="text" class="form-control" name="name" id="sellername" placeholder="Seller Name" required>
             </div>
             <div class="form-group">
               <label for="address">Seller Address</label>

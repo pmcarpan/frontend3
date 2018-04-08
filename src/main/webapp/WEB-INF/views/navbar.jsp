@@ -21,7 +21,7 @@
           Products
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">All Products</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/product/viewAll">All Products</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Cat 1</a>
           <a class="dropdown-item" href="#">Cat 2</a>
@@ -37,6 +37,12 @@
       </c:if>
       <c:choose>
         <c:when test="${userLoggedIn || adminLoggedIn}">
+          <li class="nav-item text-warning navbar-text mr-2">
+            ${username}
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/signout">Sign Out</a>
           </li>

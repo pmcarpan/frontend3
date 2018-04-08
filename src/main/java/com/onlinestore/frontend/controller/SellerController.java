@@ -1,5 +1,7 @@
 package com.onlinestore.frontend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.onlinestore.backend.dao.SellerDAO;
+import com.onlinestore.backend.model.Product;
 import com.onlinestore.backend.model.Seller;
 
 @Controller
@@ -35,7 +38,18 @@ public class SellerController {
 	
 	@RequestMapping(value = "/admin/seller/delete/{sellerId}")
 	public ModelAndView adminSellerDelete(@PathVariable int sellerId) {
-		sDAO.delete(sellerId);
+		List<Product> l = sDAO.getSeller(sellerId).getProducts();
+		if (l != null && l.size() > 0) {
+			ModelAndView mv = new ModelAndView("index");
+			mv.addObject("adminView", "seller");
+			mv.addObject("sellerList", sDAO.getAllSellers());
+			mv.addObject("sellerMsg", "cannotDelete");
+			
+			return mv;
+		}
+		else {
+			sDAO.delete(sellerId);
+		}
 		
 		return adminSeller();
 	}
