@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec"
+  uri="http://www.springframework.org/security/tags"%>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <!--  <a class="navbar-brand" href="#">Navbar</a> -->
@@ -30,32 +32,33 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      <c:if test = "${adminLoggedIn}">
-        <li class="nav-item text-warning navbar-text mr-2">
-          Admin Logged In!
-        </li>
-      </c:if>
-      <c:choose>
-        <c:when test="${userLoggedIn || adminLoggedIn}">
+
+        <sec:authorize access="isAuthenticated()">
+        <%-- <c:when test="${userLoggedIn || adminLoggedIn}"> --%>
           <li class="nav-item text-warning navbar-text mr-2">
-            ${username}
+            ${pageContext.request.userPrincipal.name}
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <span class="font-weight-bold">Administrator</span>
+            </sec:authorize>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign Out</a>
           </li>
-        </c:when>
-        <c:otherwise>
+        <%-- </c:when> --%>
+        </sec:authorize>
+        <%-- <c:otherwise> --%>
+        <sec:authorize access="isAnonymous()">
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="${pageContext.request.contextPath}/register">Register</a>
           </li>
-         </c:otherwise>
-      </c:choose>
+         <%-- </c:otherwise> --%>
+        </sec:authorize>
     </ul>
   </div>
 </nav>

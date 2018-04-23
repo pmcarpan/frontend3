@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="sec"
+  uri="http://www.springframework.org/security/tags"%>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -24,8 +26,9 @@
     <p>${userLoggedIn}</p> 
     --%>
     
-    <c:choose>
-      <c:when test="${adminLoggedIn}">
+
+      <sec:authorize access="hasRole('ROLE_ADMIN')">
+
         <%@ include file="admin-home.jsp" %> 
         
         <c:if test="${adminView == 'seller'}">
@@ -46,12 +49,15 @@
         <c:if test="${adminView == 'productUpdate'}">
           <%@ include file="admin-product-update.jsp" %>
         </c:if>
-        
-      </c:when>
-      <c:otherwise>
+
+      </sec:authorize>
+      
+      <sec:authorize access="isAnonymous() || hasRole('ROLE_USER')">
+
         <%@ include file="user-home.jsp" %> 
-      </c:otherwise>
-    </c:choose>
+
+      </sec:authorize>
+
     
     <br>
     

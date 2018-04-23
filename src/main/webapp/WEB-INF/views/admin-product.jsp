@@ -57,7 +57,7 @@
           Insert Product
         </div>
         <div class="card-body bg-white">
-          <form action="${pageContext.request.contextPath}/admin/product/insert" method="post">
+          <form action="${pageContext.request.contextPath}/admin/product/insert" enctype="multipart/form-data" method="post">
             <div class="form-group">
               <label for="pname">Product Name</label>
               <input type="text" class="form-control" name="name" id="pname" placeholder="Product Name" required autofocus>
@@ -77,6 +77,10 @@
             <div class="form-group">
               <label for="sID">Seller Id</label>
               <input type="text" class="form-control" name="sellerId" id="sID" placeholder="0" required>
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input type="file" class="form-control-file" name="image" id="image" required>
             </div>
             <button type="submit" class="btn btn-primary">Insert</button>
           </form>

@@ -1,5 +1,7 @@
 package com.onlinestore.frontend.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -10,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.onlinestore.backend.dao.CategoryDAO;
 import com.onlinestore.backend.model.Category;
+import com.onlinestore.backend.model.Product;
 
 @Controller
 public class CategoryController {
@@ -35,7 +38,18 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/admin/category/delete/{categoryId}")
 	public ModelAndView adminCategoryDelete(@PathVariable int categoryId) {
-		cDAO.delete(categoryId);
+		Set<Product> l = cDAO.getCategory(categoryId).getProducts();
+		if (l != null && l.size() > 0) {
+			ModelAndView mv = new ModelAndView("index");
+			mv.addObject("adminView", "category");
+			mv.addObject("categoryList", cDAO.getAllCategories());
+			mv.addObject("categoryMsg", "cannotDelete");
+			
+			return mv;
+		}
+		else {
+			cDAO.delete(categoryId);
+		}
 		
 		return adminCategory();
 	}

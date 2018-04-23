@@ -1,5 +1,7 @@
 package com.onlinestore.frontend.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -26,14 +28,15 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(@ModelAttribute("user") User user, BindingResult result) {
-//        if (result.hasErrors()) {
-//            return "error";
-//        }
+    public ModelAndView registerUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+        	return new ModelAndView("register"); 
+        }
 		System.out.println("from register controller -- registering user"); 
+		System.out.println(user.getUsername() + " -- " + user.getPassword()); 
 		
 		uDAO.saveOrUpdate(user);
 		
-		return new ModelAndView("login");
+		return new ModelAndView("login", "msg", "registerSuccess");
     }
 }

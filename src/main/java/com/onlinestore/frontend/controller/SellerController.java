@@ -1,6 +1,6 @@
 package com.onlinestore.frontend.controller;
 
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,7 @@ public class SellerController {
 	
 	@RequestMapping(value = "/admin/seller/delete/{sellerId}")
 	public ModelAndView adminSellerDelete(@PathVariable int sellerId) {
-		List<Product> l = sDAO.getSeller(sellerId).getProducts();
+		Set<Product> l = sDAO.getSeller(sellerId).getProducts();
 		if (l != null && l.size() > 0) {
 			ModelAndView mv = new ModelAndView("index");
 			mv.addObject("adminView", "seller");

@@ -7,6 +7,16 @@
       <h2>Category List is empty</h2>
     </c:when>
     <c:otherwise>
+      <c:if test="${categoryMsg == 'cannotDelete'}">
+        <div class="row justify-content-center">
+          <div class="col-8">
+            <div class="alert alert-danger text-center">
+              Could not delete category. Check whether there are some products in the category or not.
+            </div>
+          </div>
+        </div>
+      </c:if>
+    
       <h2>List of Categories</h2>
       
       <br>
@@ -54,7 +64,7 @@
           <form action="${pageContext.request.contextPath}/admin/category/insert" method="post">
             <div class="form-group">
               <label for="catname">Category Name</label>
-              <input type="text" class="form-control" name="name" id="catname" placeholder="Category Name" required autofocus>
+              <input type="text" class="form-control" name="name" id="catname" placeholder="Category Name" required>
             </div>
             <div class="form-group">
               <label for="desc">Category Description</label>

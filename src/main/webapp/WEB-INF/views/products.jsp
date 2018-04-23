@@ -28,39 +28,41 @@
         
           <h2>List of Products</h2>
           <br>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Product Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Description</th>
-                <th scope="col">Seller</th>
-                <th scope="col">Category</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <c:forEach items="${productList}" var="product">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Product Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Seller</th>
+                    <th scope="col">Category</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <c:forEach items="${productList}" var="product">
+                    <tr>
+                      <td class="align-middle">${product.id}</td> 
+                      <td class="align-middle">${product.name}</td>
+                      <td class="align-middle">${product.price}</td>
+                      <td class="align-middle">${product.description}</td>
+                      <td class="align-middle">${product.seller.name}</td>
+                      <td class="align-middle">${product.category.name}</td>
+                      <td class="align-middle">
+                        <a class="btn btn-primary" 
+                           href="${pageContext.request.contextPath}/product/view/${product.id}">View</a>
+                        /
+                        <a class="btn btn-warning" 
+                           href="${pageContext.request.contextPath}/cart/add/${product.id}">Add to Cart</a>
+                      </td>
+                    </tr>
+                  </c:forEach>
                 <tr>
-                  <td class="align-middle">${product.id}</td> 
-                  <td class="align-middle">${product.name}</td>
-                  <td class="align-middle">${product.price}</td>
-                  <td class="align-middle">${product.description}</td>
-                  <td class="align-middle">${product.seller.name}</td>
-                  <td class="align-middle">${product.category.name}</td>
-                  <td class="align-middle">
-                    <a class="btn btn-primary" 
-                       href="${pageContext.request.contextPath}/product/view/${product.id}">View</a>
-                    /
-                    <a class="btn btn-warning" 
-                       href="${pageContext.request.contextPath}/cart/add/${product.id}">Add to Cart</a>
-                  </td>
-                </tr>
-              </c:forEach>
-              <tr>
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </c:otherwise>
       </c:choose>
     </div>

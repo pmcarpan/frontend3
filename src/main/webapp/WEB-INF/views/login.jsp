@@ -26,15 +26,25 @@
           </div>
         </div>
       </c:if>
+      
+      <c:if test="${msg == 'registerSuccess'}">
+        <div class="row justify-content-center">
+          <div class="col-6">
+            <div class="alert alert-success text-center">
+              Registered Successfully!
+            </div>
+          </div>
+        </div>
+      </c:if>
         
       <div class="row justify-content-center">
-        <div class="col-6">
+        <div class="col-12 col-md-8 col-lg-6">
           <div class="card bg-primary">
     	    <div class="card-header text-light">
     	      Login
     	    </div>
     	    <div class="card-body bg-white">
-              <form action="${pageContext.request.contextPath}/loginUser" method="post">
+              <form action="${pageContext.request.contextPath}/login" method="post">
                 <div class="form-group">
                   <label for="username">Username</label>
                   <input type="text" class="form-control" name="username" id="username" placeholder="Username" required autofocus>

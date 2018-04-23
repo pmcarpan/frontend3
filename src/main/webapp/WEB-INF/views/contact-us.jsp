@@ -20,28 +20,30 @@
       <h2>Get in touch, send us an email.</h2>
       
       <br>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nature of issue</th>
-            <th scope="col">Corresponding contact information</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>For product or order related queries</td>
-			<td>customercare@onlinestore.com</td>
-          </tr>
-          <tr>
-            <td>For business or collaboaration related queries</td>
-			<td>business@onlinestore.com</td>
-          </tr>
-          <tr>
-            <td>For all other purposes</td>
-			<td>other@onlinestore.com</td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Nature of issue</th>
+                <th scope="col">Corresponding contact information</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>For product or order related queries</td>
+  			    <td>customercare@onlinestore.com</td>
+              </tr>
+              <tr>
+                <td>For business or collaboaration related queries</td>
+  			    <td>business@onlinestore.com</td>
+              </tr>
+              <tr>
+                <td>For all other purposes</td>
+                <td>other@onlinestore.com</td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
     </div>
     
     <br>

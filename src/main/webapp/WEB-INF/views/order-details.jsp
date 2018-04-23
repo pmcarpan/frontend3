@@ -17,24 +17,40 @@
     <%@ include file="navbar.jsp" %> 
     
     <div class="container">
-      <c:choose>
-        <c:when test="${empty cart.products}"><h2>Cart is Empty</h2></c:when>
-        <c:otherwise>
-          <h2>Items in Cart</h2>
-          <c:forEach items="${cart.products}" var="product">
-            ${product.id} - 
-            ${product.name} - 
-            ${product.price} - 
-            ${product.description} 
-          </c:forEach>
-        </c:otherwise>
-      </c:choose>
+
+      <h2>Items in Cart</h2> <br>
+      
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <c:forEach items="${cart.products}" var="product">
+              <tr>
+                <td class="align-middle">${product.id}</td> 
+                <td class="align-middle">${product.name}</td>
+                <td class="align-middle">${product.price}</td>
+              </tr>
+            </c:forEach>
+            <tr>
+              <td></td>
+              <td class="font-weight-bold align-middle">Total</td>
+              <td class="font-weight-bold align-middle">${cart.totPrice}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       
     </div>
     
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
           <div class="card bg-primary">
             <div class="card-header text-light">
               Order Details

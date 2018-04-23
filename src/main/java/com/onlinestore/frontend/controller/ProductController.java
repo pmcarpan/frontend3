@@ -38,6 +38,9 @@ public class ProductController {
 	
 	@RequestMapping(value = "/admin/product/insert")
 	public ModelAndView adminProductInsert(@ModelAttribute("product") Product product, BindingResult result) {
+		System.out.println("adminProductInsert");
+		System.out.println("IMG " + product.getImage().getOriginalFilename());
+		
 		pDAO.saveOrUpdate(product);
 		
 		return adminProduct();
