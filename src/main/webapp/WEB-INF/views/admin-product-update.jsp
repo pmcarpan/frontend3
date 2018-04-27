@@ -8,7 +8,7 @@
           Update Product
         </div>
         <div class="card-body bg-white">
-          <form action="${pageContext.request.contextPath}/admin/product/update" method="post">
+          <form action="${pageContext.request.contextPath}/admin/product/update" enctype="multipart/form-data" method="post">
             <div class="form-group">
               <label for="id">Product Id</label>
               <input type="text" class="form-control" name="id" id="id" value="${product.id}" required readonly>
@@ -32,6 +32,10 @@
             <div class="form-group">
               <label for="sID">Seller Id</label>
               <input type="text" class="form-control" name="sellerId" id="sID" value="${product.sellerId}" placeholder="0" required>
+            </div>
+            <div class="form-group">
+              <label for="image">Image</label>
+              <input type="file" class="form-control-file" name="image" id="image">
             </div>
             <button type="submit" class="btn btn-primary">Update</button>
           </form>

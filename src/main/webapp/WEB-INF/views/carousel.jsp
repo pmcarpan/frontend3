@@ -2,19 +2,19 @@
 	    <div class="carousel-inner">
 	      <div class="carousel-item active">
 	        <img class="c-img mx-auto d-block" 
-                 src="${pageContext.request.contextPath}/resources/images/carousel-1.jpg">
+                 src="${pageContext.request.contextPath}/resources/images/carouselimg.jpg">
 	      </div>
 	      <div class="carousel-item">
 	        <img class="c-img mx-auto d-block" 
-                 src="${pageContext.request.contextPath}/resources/images/carousel-2.jpg">
+                 src="${pageContext.request.contextPath}/resources/images/carouselimg2.jpg">
 	      </div>
 	      <div class="carousel-item">
 	        <img class="c-img mx-auto d-block" 
-                 src="${pageContext.request.contextPath}/resources/images/carousel-3.jpg">
+                 src="${pageContext.request.contextPath}/resources/images/carouselimg3.jpg">
 	      </div>
 	      <div class="carousel-item">
 	        <img class="c-img mx-auto d-block" 
-                 src="${pageContext.request.contextPath}/resources/images/carousel-4.jpg">
+                 src="${pageContext.request.contextPath}/resources/images/carouselimg4.jpg">
 	      </div>
 	    </div>
 	    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

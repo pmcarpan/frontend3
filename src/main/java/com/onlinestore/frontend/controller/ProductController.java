@@ -65,6 +65,7 @@ public class ProductController {
 	@RequestMapping(value = "/admin/product/update")
 	public ModelAndView adminProductUpdate(@ModelAttribute("product") Product product) {
 		System.out.println(product.getId() + " " + product.getName());
+		System.out.println(product.getImage().getSize());
 		
 		// pDAO.delete(product.getId());
 		pDAO.saveOrUpdate(product);

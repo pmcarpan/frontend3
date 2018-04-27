@@ -20,34 +20,67 @@
     <%@ include file="navbar.jsp" %> 
     
     <div class="container">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Product Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Description</th>
-            <th scope="col">Seller</th>
-            <th scope="col">Category</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="align-middle">${product.id}</td> 
-            <td class="align-middle">${product.name}</td>
-            <td class="align-middle">${product.price}</td>
-            <td class="align-middle">${product.description}</td>
-            <td class="align-middle">${product.seller.name}</td>
-            <td class="align-middle">${product.category.name}</td>
-            <td class="align-middle">
-              <a class="btn btn-warning" 
-                 href="${pageContext.request.contextPath}/cart/add/${product.id}">Add to Cart</a>
-            </td>
-          </tr>
-          <tr>
-        </tbody>
-      </table>
+    
+      <div class="card bg-primary">
+        <div class="card-header text-white">Viewing Product</div>
+        
+        <div class="card-body bg-light"><div class="container"><div class="row">
+          <div class="card border-primary col-12 col-md-4">
+            <img src="${pageContext.request.contextPath}/resources/images/products/${product.imageAddress}" 
+                 class="max-auto my-auto" style="height:auto; max-width:100%;" alt="Product Image" />
+          </div>
+          <div class="card border-primary col-12 col-md-7 mx-auto">
+            <table class="table my-auto">
+              <tbody>
+                <tr>
+                  <td>Id</td>
+                  <td class="align-middle">${product.id}</td> 
+                </tr>
+                <tr class="table-info">
+                  <td>Name</td>
+                  <td class="align-middle">${product.name}</td>
+                </tr>
+                <tr class="table-warning">
+                  <td>Price</td>
+                  <td class="align-middle">${product.price}</td>
+                </tr>
+                <tr>
+                  <td><small>Description</small></td>
+                  <td class="align-middle"><small>${product.description}</small></td>
+                </tr>
+                <tr class="table-success">
+                  <td>Seller Name</td>
+                  <td class="align-middle">${product.seller.name}</td>
+                </tr>
+                <tr>
+                  <td><small>Seller Address</small></td>
+                  <td class="align-middle"><small>${product.seller.address}</small></td>
+                </tr>
+                <tr class="table-success">
+                  <td>Category</td>
+                  <td class="align-middle">${product.category.name}</td>
+                </tr>
+                <tr>
+                  <td><small>Category Description</small></td>
+                  <td class="align-middle"><small>${product.category.description}</small></td>
+                </tr>
+                <tr>
+                  <td class="align-middle">
+                    <a class="btn btn-warning" 
+                       href="${pageContext.request.contextPath}/cart/add/${product.id}">Add to Cart</a>
+                  </td>
+                  <td></td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+          </div>
+        </div></div></div>
+      </div>
+
     </div>
+    
+    <br>
+    <%@ include file="footer.jsp" %>
   </body>
 </html>

@@ -49,7 +49,7 @@
                   <td class="align-middle">
                   	<c:if test="${!(empty cart.products)}">
                       <a class="btn btn-warning" 
-                         href="${pageContext.request.contextPath}/#">Continue Shopping</a>
+                         href="${pageContext.request.contextPath}/product/viewAll">Continue Shopping</a>
                     </c:if>
                   </td>
                   <td class="align-middle" colspan="2">
