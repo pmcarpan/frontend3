@@ -29,6 +29,10 @@ public class RegisterController {
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
     public ModelAndView registerUser(@ModelAttribute("user") @Valid User user, BindingResult result) {
+		if (uDAO.getUser(user.getUsername()) != null) {
+			result.rejectValue("username", "error.user", "Username already exists, choose a different username");
+		}
+		
         if (result.hasErrors()) {
         	return new ModelAndView("register"); 
         }

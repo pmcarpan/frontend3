@@ -18,7 +18,10 @@
       <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact Us</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/product/viewAll">Products</a>
+      </li>
+      <%-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Products
         </a>
@@ -29,7 +32,7 @@
           <a class="dropdown-item" href="#">Cat 2</a>
           <a class="dropdown-item" href="#">Cat 3</a>
         </div>
-      </li>
+      </li> --%>
     </ul>
     <ul class="navbar-nav">
 

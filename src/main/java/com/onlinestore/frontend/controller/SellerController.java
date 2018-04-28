@@ -1,6 +1,8 @@
 package com.onlinestore.frontend.controller;
 
-import java.util.Set;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.onlinestore.backend.dao.ProductDAO;
 import com.onlinestore.backend.dao.SellerDAO;
 import com.onlinestore.backend.model.Product;
 import com.onlinestore.backend.model.Seller;
@@ -19,6 +22,8 @@ public class SellerController {
 	
 	@Autowired
 	private SellerDAO sDAO;
+	@Autowired
+	private ProductDAO pDAO;
 	
 	@RequestMapping(value = "/admin/seller")
 	public ModelAndView adminSeller() {
@@ -30,7 +35,11 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value = "/admin/seller/insert")
-	public ModelAndView adminSellerInsert(@ModelAttribute("seller") Seller seller, BindingResult result) {
+	public ModelAndView adminSellerInsert(@Valid @ModelAttribute("seller") Seller seller, BindingResult result) {
+		if (result.hasErrors()) {
+			return adminSeller();
+		}
+		
 		sDAO.saveOrUpdate(seller);
 		
 		return adminSeller();
@@ -38,7 +47,7 @@ public class SellerController {
 	
 	@RequestMapping(value = "/admin/seller/delete/{sellerId}")
 	public ModelAndView adminSellerDelete(@PathVariable int sellerId) {
-		Set<Product> l = sDAO.getSeller(sellerId).getProducts();
+		List<Product> l = pDAO.getAllProductsBySeller(sellerId);
 		if (l != null && l.size() > 0) {
 			ModelAndView mv = new ModelAndView("index");
 			mv.addObject("adminView", "seller");
@@ -64,8 +73,16 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value = "/admin/seller/update")
-	public ModelAndView adminSellerUpdate(@ModelAttribute("seller") Seller seller) {
+	public ModelAndView adminSellerUpdate(@Valid @ModelAttribute("seller") Seller seller, BindingResult result) {
 		System.out.println(seller.getId() + " " + seller.getName());
+		
+		if (result.hasErrors()) {
+			ModelAndView mv = new ModelAndView("index", "adminView", "sellerUpdate");
+			
+			mv.addObject("seller", seller);
+			
+			return mv;
+		}
 		
 		sDAO.saveOrUpdate(seller);
 		

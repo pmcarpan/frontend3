@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="container">
   <c:choose>
@@ -64,11 +65,17 @@
           <form action="${pageContext.request.contextPath}/admin/seller/insert" method="post">
             <div class="form-group">
               <label for="sellername">Seller Name</label>
-              <input type="text" class="form-control" name="name" id="sellername" placeholder="Seller Name" required>
+              <input type="text" class="form-control" name="name" id="sellername" placeholder="Seller Name">
+              <div class="text-danger">
+                <small><form:errors path="seller.name" /></small>
+              </div>
             </div>
             <div class="form-group">
               <label for="address">Seller Address</label>
-              <input type="text" class="form-control" name="address" id="address" placeholder="1 Example Road, Delhi - 01" required>
+              <input type="text" class="form-control" name="address" id="address" placeholder="1 Example Road, Delhi - 01">
+              <div class="text-danger">
+                <small><form:errors path="seller.address" /></small>
+              </div>
             </div>
             <button type="submit" class="btn btn-primary">Insert</button>
           </form>

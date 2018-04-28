@@ -1,6 +1,8 @@
 package com.onlinestore.frontend.controller;
 
-import java.util.Set;
+import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.onlinestore.backend.dao.CategoryDAO;
+import com.onlinestore.backend.dao.ProductDAO;
 import com.onlinestore.backend.model.Category;
 import com.onlinestore.backend.model.Product;
 
@@ -19,6 +22,8 @@ public class CategoryController {
 	
 	@Autowired
 	private CategoryDAO cDAO;
+	@Autowired
+	private ProductDAO pDAO;
 	
 	@RequestMapping(value = "/admin/category")
 	public ModelAndView adminCategory() {
@@ -30,7 +35,11 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = "/admin/category/insert")
-	public ModelAndView adminCategoryInsert(@ModelAttribute("category") Category category, BindingResult result) {
+	public ModelAndView adminCategoryInsert(@Valid @ModelAttribute("category") Category category, BindingResult result) {
+		if (result.hasErrors()) {
+			return adminCategory();
+		}
+		
 		cDAO.saveOrUpdate(category);
 		
 		return adminCategory();
@@ -38,7 +47,7 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/admin/category/delete/{categoryId}")
 	public ModelAndView adminCategoryDelete(@PathVariable int categoryId) {
-		Set<Product> l = cDAO.getCategory(categoryId).getProducts();
+		List<Product> l = pDAO.getAllProductsByCategory(categoryId);
 		if (l != null && l.size() > 0) {
 			ModelAndView mv = new ModelAndView("index");
 			mv.addObject("adminView", "category");
@@ -64,8 +73,16 @@ public class CategoryController {
 	}
 	
 	@RequestMapping(value = "/admin/category/update")
-	public ModelAndView adminCategoryUpdate(@ModelAttribute("category") Category category) {
+	public ModelAndView adminCategoryUpdate(@Valid @ModelAttribute("category") Category category, BindingResult result) {
 		System.out.println(category.getId() + " " + category.getName());
+		
+		if (result.hasErrors()) {
+			ModelAndView mv = new ModelAndView("index", "adminView", "categoryUpdate");
+			
+			mv.addObject("category", category);
+			
+			return mv;
+		}
 		
 		cDAO.saveOrUpdate(category);
 		

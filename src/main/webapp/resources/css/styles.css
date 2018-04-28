@@ -31,6 +31,9 @@ body {
 
 .c-img {
   max-height: 200px; width: auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .table-striped > tbody > tr > td, .table-striped > tbody > tr > th, .table-striped > thead > tr > td, .table-striped > thead > tr > th {
