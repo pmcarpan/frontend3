@@ -38,6 +38,7 @@ public class ProductController {
 	
 	@RequestMapping(value = "/admin/product")
 	public ModelAndView adminProduct() {
+		
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("adminView", "product");
 		mv.addObject("productList", pDAO.getAllProducts());
@@ -56,6 +57,14 @@ public class ProductController {
 		if (img == null || img.isEmpty()) {
 			System.out.println("rejecting image");
 			result.rejectValue("image", "error.product", "Please input an image");
+		}
+		else {
+			String type = img.getContentType();
+			if (!type.equals("image/jpe") && !type.equals("image/jpg") 
+					&& !type.equals("image/jpeg") && !type.equals("image/png") && !type.equals("image/gif")) {
+				System.out.println("rejecting image");
+				result.rejectValue("image", "error.product", "Please input an image");
+			}
 		}
 		
 		if (result.hasErrors()) {
@@ -89,6 +98,18 @@ public class ProductController {
 	public ModelAndView adminProductUpdate(@Valid @ModelAttribute("product") Product product, BindingResult result) {
 		System.out.println(product.getId() + " " + product.getName());
 		System.out.println(product.getImage().getSize());
+		
+		MultipartFile img = product.getImage();
+		
+		// if a file is input, validate it for image
+		if (img != null && !img.isEmpty()) {
+			String type = img.getContentType();
+			if (!type.equals("image/jpe") && !type.equals("image/jpg") 
+					&& !type.equals("image/jpeg") && !type.equals("image/png") && !type.equals("image/gif")) {
+				System.out.println("rejecting image");
+				result.rejectValue("image", "error.product", "Please input an image");
+			}
+		}
 		
 		if (result.hasErrors()) {
 			ModelAndView mv = new ModelAndView("index", "adminView", "productUpdate");

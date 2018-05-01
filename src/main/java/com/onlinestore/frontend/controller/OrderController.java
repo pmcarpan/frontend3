@@ -1,11 +1,14 @@
 package com.onlinestore.frontend.controller;
 
-import java.util.Set;
+import java.security.GeneralSecurityException;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,14 +20,13 @@ import com.onlinestore.backend.dao.UserDAO;
 import com.onlinestore.backend.model.Cart;
 import com.onlinestore.backend.model.OrderDetail;
 import com.onlinestore.backend.model.User;
+import com.onlinestore.backend.utility.SHAUtil;
 
 @Controller
 public class OrderController {
 
 	@Autowired
 	private CartDAO cDAO;
-//	@Autowired
-//	private ProductDAO pDAO;
 	@Autowired
 	private OrderDetailDAO oDDAO;
 	@Autowired
@@ -86,7 +88,18 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/cart/checkout/placeOrder")
-	public ModelAndView placeOrder(@ModelAttribute OrderDetail oD, HttpSession session) {
+	public ModelAndView placeOrder(@Valid @ModelAttribute OrderDetail oD, BindingResult result, HttpSession session) {
+		if (result.hasErrors()) {
+			return new ModelAndView("order-details");
+		}
+		
+		oD.setDate(new Date());
+		try {
+			oD.setSecCode(SHAUtil.encode(oD.getSecCode()));
+		} 
+		catch (GeneralSecurityException e) {
+			e.printStackTrace();
+		}
 		String username = (String) session.getAttribute("username");
 		
 		oDDAO.saveOrUpdate(oD, username);
@@ -95,6 +108,10 @@ public class OrderController {
 		User u = uDAO.getUser(username);
 		session.setAttribute("orders", u.getOrders());
 		
-		return new ModelAndView("cart");
+		String cardNum = oD.getCardNumber();
+		cardNum = "**" + cardNum.substring(cardNum.length()-4, cardNum.length());
+		oD.setCardNumber(cardNum);
+		
+		return new ModelAndView("invoice", "order", oD);
 	}
 }

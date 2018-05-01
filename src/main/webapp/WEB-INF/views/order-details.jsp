@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <%@ page language="java" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -59,11 +61,40 @@
               <form action="${pageContext.request.contextPath}/cart/checkout/placeOrder" method="post">
                 <div class="form-group">
                   <label for="billadd">Billing Address</label>
-                  <input type="text" class="form-control" name="billingAddress" id="billAdd" placeholder="Example Address" required autofocus>
+                  <input type="text" class="form-control" name="billingAddress" id="billAdd" placeholder="Example Address" autofocus>
+                  <div class="text-danger">
+                    <small><form:errors path="orderDetail.billingAddress" /></small>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="delAdd">Delivery Address</label>
-                  <input type="text" class="form-control" name="deliveryAddress" id="delAdd" placeholder="Example Address" required>
+                  <input type="text" class="form-control" name="deliveryAddress" id="delAdd" placeholder="Example Address">
+                  <div class="text-danger">
+                    <small><form:errors path="orderDetail.deliveryAddress" /></small>
+                  </div>
+                </div>
+                <hr>
+                <div class="form-group">
+                  <label for="cName">Name on Card</label>
+                  <input type="text" class="form-control" name="cardName" id="cName" placeholder="John Doe">
+                  <div class="text-muted"><small>Full name as on card</small></div>
+                  <div class="text-danger">
+                    <small><form:errors path="orderDetail.cardName" /></small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="cNum">Card Number</label>
+                  <input type="text" class="form-control" name="cardNumber" id="cNum" placeholder="0000111100001111">
+                  <div class="text-danger">
+                    <small><form:errors path="orderDetail.cardNumber" /></small>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="sCode">Security Code</label>
+                  <input type="password" class="form-control" name="secCode" id="sCode">
+                  <div class="text-danger">
+                    <small><form:errors path="orderDetail.secCode" /></small>
+                  </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Place Order</button>
               </form>

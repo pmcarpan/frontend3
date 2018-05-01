@@ -10,16 +10,16 @@
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/">Home</a>
+        <a class="nav-link text-light" href="${pageContext.request.contextPath}/">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/about">About Us</a>
+        <a class="nav-link text-light" href="${pageContext.request.contextPath}/about">About Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/contact">Contact Us</a>
+        <a class="nav-link text-light" href="${pageContext.request.contextPath}/contact">Contact Us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/product/viewAll">Products</a>
+        <a class="nav-link text-light" href="${pageContext.request.contextPath}/product/viewAll">Products</a>
       </li>
       <%-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,21 +44,21 @@
               <span class="font-weight-bold">Administrator</span>
             </sec:authorize>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/cart">Cart</a>
+          <li class="nav-item text-light">
+            <a class="nav-link text-light" href="${pageContext.request.contextPath}/cart">Cart</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Sign Out</a>
+          <li class="nav-item text-light">
+            <a class="nav-link text-light" href="${pageContext.request.contextPath}/logout">Sign Out</a>
           </li>
         <%-- </c:when> --%>
         </sec:authorize>
         <%-- <c:otherwise> --%>
         <sec:authorize access="isAnonymous()">
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+            <a class="nav-link text-light" href="${pageContext.request.contextPath}/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/register">Register</a>
+            <a class="nav-link text-light" href="${pageContext.request.contextPath}/register">Register</a>
           </li>
          <%-- </c:otherwise> --%>
         </sec:authorize>

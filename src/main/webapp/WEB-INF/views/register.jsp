@@ -62,7 +62,7 @@
                   <div class="col-12 col-md-4">
                     <div class="form-group">
                       <label for="phone">Phone Number</label>
-                      <input type="number" class="form-control" name="phone" id="phone" placeholder="9999999999" >
+                      <input type="text" class="form-control" name="phone" id="phone" placeholder="9123456780" >
                       <div class="text-danger">
                         <small><form:errors path="user.phone" /></small>
                       </div>
