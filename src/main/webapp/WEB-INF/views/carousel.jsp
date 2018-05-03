@@ -10,7 +10,7 @@
 	      </div>
 	      <div class="carousel-item">
 	        <img class="c-img mx-auto d-block" 
-                 src="${pageContext.request.contextPath}/resources/images/carouselimg5.jpg">
+                 src="${pageContext.request.contextPath}/resources/images/carouselimg6.jpg">
 	      </div>
 	      <div class="carousel-item">
 	        <img class="c-img mx-auto d-block" 

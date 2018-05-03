@@ -21,10 +21,7 @@ public class RegisterController {
 	
 	@RequestMapping("/register")  
 	public ModelAndView showRegisterPage() {  
-		System.out.println("from register controller");  
-		
 		return new ModelAndView("register");  
-		// return new ModelAndView("register", "user", new User());  
 	}
 	
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
@@ -36,8 +33,6 @@ public class RegisterController {
         if (result.hasErrors()) {
         	return new ModelAndView("register"); 
         }
-		System.out.println("from register controller -- registering user"); 
-		System.out.println(user.getUsername() + " -- " + user.getPassword()); 
 		
 		uDAO.saveOrUpdate(user);
 		

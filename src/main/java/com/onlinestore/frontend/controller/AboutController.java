@@ -7,8 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AboutController {
 	@RequestMapping("/about")  
-	public ModelAndView showAboutPage() {  
-		System.out.println("from about controller");  
+	public ModelAndView showAboutPage() { 
 		return new ModelAndView("about-us");  
 	}
 }

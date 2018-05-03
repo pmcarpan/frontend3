@@ -20,8 +20,8 @@ body {
 }
 
 .jumbotron {
-  background-image: url("../images/jumbo-3.jpg");
-  background-size: cover;
+  background-image: url("../images/collage-6.jpg");
+  background-size: auto 100%;
   margin-bottom: 0;
 }
 

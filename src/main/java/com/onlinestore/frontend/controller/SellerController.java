@@ -56,9 +56,8 @@ public class SellerController {
 			
 			return mv;
 		}
-		else {
-			sDAO.delete(sellerId);
-		}
+			
+		sDAO.delete(sellerId);
 		
 		return adminSeller();
 	}
@@ -73,12 +72,9 @@ public class SellerController {
 	}
 	
 	@RequestMapping(value = "/admin/seller/update")
-	public ModelAndView adminSellerUpdate(@Valid @ModelAttribute("seller") Seller seller, BindingResult result) {
-		System.out.println(seller.getId() + " " + seller.getName());
-		
+	public ModelAndView adminSellerUpdate(@Valid @ModelAttribute("seller") Seller seller, BindingResult result) {	
 		if (result.hasErrors()) {
 			ModelAndView mv = new ModelAndView("index", "adminView", "sellerUpdate");
-			
 			mv.addObject("seller", seller);
 			
 			return mv;

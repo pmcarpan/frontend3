@@ -8,7 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	@RequestMapping("/")  
 	public ModelAndView showHomePage() {  
-		System.out.println("from home controller");  
 		return new ModelAndView("index");  
 	} 
 }

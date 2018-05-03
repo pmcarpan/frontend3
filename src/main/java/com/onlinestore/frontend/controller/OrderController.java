@@ -40,7 +40,7 @@ public class OrderController {
 		
 		Object orders = session.getAttribute("orders");
 		if (orders == null) {
-			session.setAttribute("orders", u.getOrders());
+			session.setAttribute("orders", oDDAO.getAllOrders(username));
 		}
 		
 		Cart c = (Cart) session.getAttribute("cart");
@@ -53,26 +53,20 @@ public class OrderController {
 	
 	@RequestMapping("/cart/add/{productId}")
 	public ModelAndView addToCart(@PathVariable int productId, HttpSession session) {
-		// Cart c = (Cart) session.getAttribute("cart");
 		String username = (String) session.getAttribute("username");
 		
 		cDAO.addProduct(username, productId);
 		session.setAttribute("cart", uDAO.getUser(username).getCart());
-		
-		// System.out.println(c.getProducts());
 		
 		return new ModelAndView("cart");
 	}
 	
 	@RequestMapping("/cart/remove/{productId}")
 	public ModelAndView removeFromCart(@PathVariable int productId, HttpSession session) {
-		// Cart c = (Cart) session.getAttribute("cart");
 		String username = (String) session.getAttribute("username");
 		
 		cDAO.removeProduct(username, productId);
 		session.setAttribute("cart", uDAO.getUser(username).getCart());
-		
-		// System.out.println(c.getProducts());
 		
 		return new ModelAndView("cart");
 	}
@@ -105,8 +99,7 @@ public class OrderController {
 		oDDAO.saveOrUpdate(oD, username);
 		session.setAttribute("cart", null);
 		
-		User u = uDAO.getUser(username);
-		session.setAttribute("orders", u.getOrders());
+		session.setAttribute("orders", oDDAO.getAllOrders(username));
 		
 		String cardNum = oD.getCardNumber();
 		cardNum = "**" + cardNum.substring(cardNum.length()-4, cardNum.length());

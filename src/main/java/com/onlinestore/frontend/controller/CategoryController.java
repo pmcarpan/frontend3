@@ -74,8 +74,6 @@ public class CategoryController {
 	
 	@RequestMapping(value = "/admin/category/update")
 	public ModelAndView adminCategoryUpdate(@Valid @ModelAttribute("category") Category category, BindingResult result) {
-		System.out.println(category.getId() + " " + category.getName());
-		
 		if (result.hasErrors()) {
 			ModelAndView mv = new ModelAndView("index", "adminView", "categoryUpdate");
 			
