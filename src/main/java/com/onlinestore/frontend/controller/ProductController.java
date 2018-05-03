@@ -84,7 +84,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = "/admin/product/update/{productId}")
-	public ModelAndView adminProductrUpdatePage(@PathVariable int productId) {
+	public ModelAndView adminProductUpdatePage(@PathVariable int productId) {
 		ModelAndView mv = new ModelAndView("index", "adminView", "productUpdate");
 		
 		mv.addObject("product", pDAO.getProduct(productId));
