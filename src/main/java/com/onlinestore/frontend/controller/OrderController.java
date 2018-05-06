@@ -105,6 +105,14 @@ public class OrderController {
 		cardNum = "**" + cardNum.substring(cardNum.length()-4, cardNum.length());
 		oD.setCardNumber(cardNum);
 		
-		return new ModelAndView("invoice", "order", oD);
+		return showInvoice(oD.getId());
+		// return new ModelAndView("invoice", "order", oD);
+	}
+	
+	@RequestMapping("/cart/invoice/{orderId}")
+	public ModelAndView showInvoice(@PathVariable int orderId) {
+		OrderDetail order = oDDAO.getOrderById(orderId);
+		
+		return new ModelAndView("invoice", "order", order);
 	}
 }

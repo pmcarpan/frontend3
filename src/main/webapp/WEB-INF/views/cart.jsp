@@ -84,13 +84,18 @@
                   <tr>
                     <th scope="col">Order Id</th>
                     <th scope="col">Status</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <c:forEach items="${orders}" var="order">
                     <tr>
-                      <td>${order.id}</td> 
-                      <td>${order.status}</td>
+                      <td class="align-middle">${order.id}</td> 
+                      <td class="align-middle">${order.status}</td>
+                      <td>
+                        <a class="btn btn-primary btn-sm" 
+                           href="${pageContext.request.contextPath}/cart/invoice/${order.id}">View Invoice</a>
+                      </td>
                     </tr>
                   </c:forEach>
                 </tbody>
